@@ -1,0 +1,5 @@
+﻿  wordle_bot.cpp
+D:\owen\Coding stuff\wordle_bot\wordle_bot.cpp(61,23): warning C4018: '<': signed/unsigned mismatch
+D:\owen\Coding stuff\wordle_bot\wordle_bot.cpp(115,27): warning C4018: '<': signed/unsigned mismatch
+D:\owen\Coding stuff\wordle_bot\wordle_bot.cpp(186,23): warning C4018: '<': signed/unsigned mismatch
+  wordle_bot.vcxproj -> D:\owen\Coding stuff\wordle_bot\Debug\wordle_bot.exe
