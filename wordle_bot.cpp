@@ -40,14 +40,7 @@ void calc_chances(Node* first) {
         cout << "open failed" << endl;
         return;
     }
-    /*
-    vector<string> all_eng_words;
-    while (fin) {
-        getline(fin, curr_word);
-        all_eng_words.push_back(curr_word);
-    }
-    all_eng_words.pop_back();
-    */
+
     int count[26][5] = {0};
     while (fin_2.peek() != EOF) {
         getline(fin_2, curr_word);
@@ -55,7 +48,7 @@ void calc_chances(Node* first) {
             count[curr_word[i] - 97][i]++;
         }
     }
-    //cout << count;
+
     Node* itr = first;
     int curr_score = 0;
     for (int i = 0; i < possible_words.size(); i++) {
@@ -71,30 +64,6 @@ void calc_chances(Node* first) {
     itr = itr->prev;
     delete itr->next;
     itr->next = nullptr;
-
-    /*
-    while (first != nullptr) {
-        cout << first->datum.first << " " << first->datum.second << endl;
-        first = first->next;
-    }
-    */
-    /*
-    int curr_score = 0;
-    int max_score = 0;
-    string max_word;
-    for (int i = 0; i < possible_words.size()-1; i++) {
-        for (int j = 0; j < 5; j++) {
-            curr_score += count[possible_words[i][j]-97][j];
-        }
-        if (curr_score > max_score) {
-            max_score = curr_score;
-            max_word = possible_words[i];
-        }
-        fout << curr_score << endl;
-        curr_score = 0;
-    }
-    cout << max_word << " " << max_score << endl;
-    */
 }
 
 void play_game(Node*& scores) {
@@ -126,9 +95,8 @@ void play_game(Node*& scores) {
         *max_score = { { "     ", -1 }, nullptr, nullptr };
         Node* max_score_no_dul = new Node();
         *max_score_no_dul = { { "     ", -1 }, nullptr, nullptr };
-        //cout << include << endl;
         while (itr != nullptr) {
-            //cout << itr->datum.first << endl;
+
             if (if_delete_word(itr->datum.first, exclude, include, templt)) {
                 delete_node(itr, scores);
             } else {
@@ -144,7 +112,7 @@ void play_game(Node*& scores) {
                 itr = itr->next;
             }
         }
-        //cout << include << endl;
+
         if (max_score_no_dul->datum.second != -1) {
             word = max_score_no_dul->datum.first;
             delete_node(max_score_no_dul, scores);
@@ -219,17 +187,6 @@ int main() {
     Node* scores = new Node();
     calc_chances(scores);
     play_game(scores);
-    //cout << has_repeat("abbdf");
-    /*
-    int exclude[26] = { 0 };
-    exclude[0] = 0;
-    exclude[1] = 0;
-    int include[26] = { 0 };
-    include[4] = 1;
-    include[6] = 1;
-    string templt = "     ";
-    cout << if_delete_word("abcde", exclude, include, templt);
-    cout << if_delete_word("aeghj", exclude, include, templt);
-    */
+    system("pause");
     return 0;
 }
